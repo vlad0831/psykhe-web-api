@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql:5.7'
+    container_name: psykhe-mysql
+    environment:
+      MYSQL_DATABASE: psykhe
+      MYSQL_USER: psykhe
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+  redis:
+    image: 'redis:alpine'
+    container_name: psykhe-redis
+    environment:
+      discovery.type: single-node
+    ports:
+      - '6379:6379'
